@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Pautan ke Fail CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Pautan ke Fail CSS (dengan ?v=4 untuk elak masalah cache) -->
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -31,14 +31,15 @@
   <section id="screen-envelope" class="screen active">
     <h1 class="script-title">Press the Envelope</h1>
     
-    <div class="envelope-wrapper" id="btnOpenEnvelope">
+    <!-- Klik pada sampul ATAU tulisan di bawahnya kedua-duanya akan membuka sampul -->
+    <div class="envelope-wrapper" id="btnOpenEnvelope" onclick="openEnvelope()">
       <div class="envelope-closed">
         <div class="envelope-flap"></div>
         <div class="wax-seal">💌</div>
       </div>
     </div>
 
-    <p class="tap-hint">tekan tu sampul u</p>
+    <p class="tap-hint" onclick="openEnvelope()" style="cursor: pointer;">tekan tu sampul u</p>
   </section>
 
   <!-- ==================== SKRIN 2: SAMPUL TERBUKA & KOLAJ ==================== -->
@@ -76,7 +77,7 @@
 
     </div>
 
-    <button class="btn-surprise" data-target="screen-menu">tekan lagi u</button>
+    <button class="btn-surprise" onclick="switchScreen('screen-menu')">tekan lagi u</button>
   </section>
 
   <!-- ==================== SKRIN 3: MENU UTAMA (4 IKON) ==================== -->
@@ -85,28 +86,28 @@
     
     <div class="menu-grid">
       <!-- Ikon 1: Journey -->
-      <div class="menu-card" data-target="screen-journey">
+      <div class="menu-card" onclick="switchScreen('screen-journey')">
         <div class="lens-flare"></div>
         <div class="menu-icon">📷</div>
         <span class="menu-label">Journey</span>
       </div>
 
       <!-- Ikon 2: Moment -->
-      <div class="menu-card" data-target="screen-moment">
+      <div class="menu-card" onclick="switchScreen('screen-moment')">
         <div class="lens-flare"></div>
         <div class="menu-icon">⏱️</div>
         <span class="menu-label">Moment</span>
       </div>
 
       <!-- Ikon 3: Playlist -->
-      <div class="menu-card" data-target="screen-playlist">
+      <div class="menu-card" onclick="switchScreen('screen-playlist')">
         <div class="lens-flare"></div>
         <div class="menu-icon">💿</div>
         <span class="menu-label">Playlist</span>
       </div>
 
       <!-- Ikon 4: Gift (Kad Ucapan, Gambar, Lagu 2 & Puisi) -->
-      <div class="menu-card" id="btnOpenGift">
+      <div class="menu-card" id="btnOpenGift" onclick="openGiftSection()">
         <div class="lens-flare"></div>
         <div class="menu-icon">🎁</div>
         <span class="menu-label">Gift</span>
@@ -116,7 +117,7 @@
 
   <!-- ==================== SKRIN 4A: JOURNEY (3 KAD KISAH) ==================== -->
   <section id="screen-journey" class="screen">
-    <button class="btn-back" data-target="screen-menu">BACK ◀</button>
+    <button class="btn-back" onclick="switchScreen('screen-menu')">BACK ◀</button>
     <h2 class="script-title section-subtitle">Our Journey</h2>
     
     <div class="journey-showcase">
@@ -137,10 +138,10 @@
 
   <!-- ==================== SKRIN 4B: MOMENT (GALERI POLAROID INTERAKTIF) ==================== -->
   <section id="screen-moment" class="screen">
-    <button class="btn-back" data-target="screen-menu">BACK ◀</button>
+    <button class="btn-back" onclick="switchScreen('screen-menu')">BACK ◀</button>
     
     <!-- Latar Gelap Apabila Gambar Polaroid Dibesarkan (Klik luar untuk kecilkan semula) -->
-    <div class="polaroid-backdrop" id="polaroidBackdrop"></div>
+    <div class="polaroid-backdrop" id="polaroidBackdrop" onclick="closeExpandedPolaroid()"></div>
 
     <!-- Pelekat Hiasan -->
     <span class="sticker sticker-top-left">🪐</span>
@@ -195,7 +196,7 @@
   <!-- ==================== SKRIN 5: GIFT (ATAS KE BAWAH: KAD UCAPAN -> GAMBAR -> PLAY MUSIK -> PUISI) ==================== -->
   <section id="screen-gift" class="screen">
     <!-- Butang Back Khas untuk Gift: Hentikan lagu2 & sambung lagu utama -->
-    <button class="btn-back" id="btnBackFromGift">BACK ◀</button>
+    <button class="btn-back" id="btnBackFromGift" onclick="backFromGift()">BACK ◀</button>
     
     <div class="gift-vertical-container">
       
@@ -220,7 +221,7 @@
         </div>
 
         <!-- Piring Hitam (Mainkan lagu2.mp3) di bawah gambar -->
-        <div class="vinyl-wrapper" id="vinylControl">
+        <div class="vinyl-wrapper" id="vinylControl" onclick="toggleGiftMusic()">
           <div class="vinyl-disc" id="vinylDisc">
             <div class="vinyl-center"></div>
           </div>
@@ -270,3 +271,50 @@
             Jangan segan untuk berlabuh kemari.</p>
           </div>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SKRIN 6: PLAYLIST (YOUTUBE & 3 BINGKAI EMAS) ==================== -->
+  <section id="screen-playlist" class="screen">
+    <button class="btn-back" onclick="switchScreen('screen-menu')">BACK ◀</button>
+    
+    <div class="playlist-layout">
+      <!-- Pemain YouTube di Sebelah Kiri -->
+      <div class="youtube-box">
+        <div class="video-responsive">
+          <iframe 
+            id="ytPlayer"
+            src="https://www.youtube.com/embed/0f_ec37PXNQ?rel=0" 
+            title="YouTube Music Player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="retro-decorations">
+          <span>📻</span>
+          <span>🎶</span>
+          <span>📺</span>
+        </div>
+      </div>
+
+      <!-- 3 Bingkai Gambar Emas di Sebelah Kanan -->
+      <div class="trio-gold-frames">
+        <div class="mini-gold-frame frame-1">
+          <img src="pic17.jpeg" alt="Foto 1">
+        </div>
+        <div class="mini-gold-frame frame-2">
+          <img src="pic18.jpeg" alt="Foto 2">
+        </div>
+        <div class="mini-gold-frame frame-3">
+          <img src="pic19.jpeg" alt="Foto 3">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pautan ke Fail JavaScript (dengan ?v=4 untuk elak masalah cache) -->
+  <script src="script.js?v=4"></script>
+</body>
+</html>
