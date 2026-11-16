@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Elemen Typewriter Surat
   const typewriterElement = document.getElementById("typewriter-text");
-  const giftMessage = `"Selamat ulang tahun, Sayang. Di hari spesialmu ini, aku cuma mau bilang terima kasih karena sudah lahir ke dunia dan membawa begitu banyak kebahagiaan ke hidupku. Kamu adalah hal terindah yang pernah hadir dalam hidupku, dan aku berharap bisa terus merayakan hari-hari bahagiamu di tahun-tahun berikutnya. I love you so much, kini dan nanti."`;
+  const giftMessage = `"Selamat ulang tahun, U. Di hari special ni, i mau ckap thankyou sebab sudah lahir ke dunia n bring so much joy in my life.The most beutiful thing ever tht came into my life. N i harap u berbahagia trus dri hrini, kemarin, esok dan selamanya, mohon maaf sebab jadi lelaki paling sibuk di dunia. I love you so much, kini dan nanti."`;
   
   let typingTimer = null;
   let charIndex = 0;
