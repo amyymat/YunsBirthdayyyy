@@ -1,0 +1,774 @@
+/* ==========================================================================
+   1. PEMBOLEHUBAH & TETAPAN ASAS (RESET)
+   ========================================================================== */
+:root {
+  --bg-gradient: linear-gradient(90deg, #0d000a 0%, #5c0044 48%, #ff00aa 100%);
+  --paper-cream: #fbf7f0;
+  --gold-primary: #d4af37;
+  --gold-light: #ffe270;
+  --gold-dark: #996515;
+  --btn-green: #5cd62b;
+  --btn-green-border: #256f07;
+  --text-white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-white);
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==========================================================================
+   2. SISTEM SKRIN SPA & TIPOGRAFI
+   ========================================================================== */
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 100vh;
+  padding: 60px 24px 40px;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: screenFade 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.screen.active {
+  display: flex;
+}
+
+@keyframes screenFade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.script-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.2rem, 7vw, 5.4rem);
+  font-weight: 400;
+  color: var(--text-white);
+  text-shadow: 0 5px 18px rgba(0, 0, 0, 0.45);
+  margin-bottom: 28px;
+  line-height: 1.15;
+}
+
+.section-subtitle {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  margin-bottom: 20px;
+}
+
+/* Butang BACK Hijau */
+.btn-back {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: linear-gradient(180deg, #75ef42 0%, #46b818 100%);
+  color: #0b2900;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  padding: 8px 22px;
+  border-radius: 50px;
+  border: 2px solid var(--btn-green-border);
+  box-shadow: 0 4px 0 #1b5204, 0 8px 16px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  z-index: 50;
+}
+
+.btn-back:hover {
+  filter: brightness(1.08);
+}
+
+.btn-back:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1b5204;
+}
+
+/* ==========================================================================
+   3. SKRIN 1: SAMPUL SURAT TERTUTUP
+   ========================================================================== */
+.envelope-wrapper {
+  cursor: pointer;
+  transition: transform 0.35s ease;
+  margin: 10px 0;
+}
+
+.envelope-wrapper:hover {
+  transform: scale(1.06) translateY(-5px);
+}
+
+.envelope-closed {
+  width: 300px;
+  height: 195px;
+  background: var(--paper-cream);
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+  border: 1px solid #e2d7c5;
+  overflow: hidden;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 118px solid #f2e8d5;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.18));
+}
+
+.wax-seal {
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle, #c80096 0%, #5e0046 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.45), inset 0 0 10px rgba(255, 255, 255, 0.35);
+  border: 2px dashed rgba(255, 255, 255, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  animation: sealPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.12); }
+}
+
+.tap-hint {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  margin-top: 24px;
+  opacity: 0.92;
+}
+
+/* ==========================================================================
+   4. SKRIN 2: SAMPUL TERBUKA & KOLAJ GAMBAR
+   ========================================================================== */
+.collage-stage {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.open-envelope-card {
+  width: 290px;
+  height: 220px;
+  background: #f5efe6;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  z-index: 3;
+  border: 2px solid #e6dccf;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid #cbbba0;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #63004a;
+}
+
+.card-inner h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.3rem;
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.card-date {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-top: 8px;
+}
+
+/* Elemen Kolaj Berperingkat */
+.collage-item, .deco-floating {
+  position: absolute;
+  opacity: 0;
+  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.35s; }
+.delay-3 { animation-delay: 0.55s; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.5) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.photo-circle {
+  left: 35px;
+  top: 15px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #ff77cc, 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 4;
+}
+
+.photo-circle img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-polaroid-left {
+  left: 45px;
+  bottom: 10px;
+  background: #fff;
+  padding: 7px 7px 22px 7px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+.photo-polaroid-left img {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+  display: block;
+  transform: rotate(-12deg);
+}
+
+.photobooth-strip {
+  right: 45px;
+  top: 5px;
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 4;
+  rotate: 12deg;
+}
+
+.photobooth-strip img {
+  width: 90px;
+  height: 78px;
+  object-fit: cover;
+  display: block;
+}
+
+.deco-butterfly {
+  top: 12px;
+  right: 175px;
+  font-size: 2.5rem;
+  z-index: 5;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.deco-rose {
+  bottom: 12px;
+  right: 165px;
+  font-size: 2.6rem;
+  z-index: 5;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.btn-surprise {
+  background: transparent;
+  color: var(--text-white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  border: none;
+  border-bottom: 2px solid var(--text-white);
+  padding-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-surprise:hover {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+  transform: scale(1.07);
+}
+
+/* ==========================================================================
+   5. SKRIN 3: MENU UTAMA (4 IKON & LENS FLARE)
+   ========================================================================== */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
+  width: 100%;
+  max-width: 880px;
+  margin-top: 20px;
+}
+
+.menu-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.35s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-12px) scale(1.06);
+}
+
+/* Kesan Cahaya Emas (Lens Flare) di Belakang Ikon */
+.lens-flare {
+  position: absolute;
+  top: 10px;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(255, 215, 100, 0.75) 0%, rgba(255, 160, 40, 0.25) 45%, transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  animation: flareGlow 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes flareGlow {
+  0% { transform: scale(0.9); opacity: 0.75; }
+  100% { transform: scale(1.18); opacity: 1; }
+}
+
+.menu-icon {
+  font-size: 4.6rem;
+  z-index: 2;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+}
+
+.menu-label {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.35rem;
+  margin-top: 8px;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.85);
+  padding: 0 12px;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   6. SKRIN 4A & 4B: JOURNEY & GALERI POLAROID (MOMENT)
+   ========================================================================== */
+.journey-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  max-width: 900px;
+}
+
+.journey-card {
+  background: #fff;
+  padding: 12px 12px 18px;
+  border-radius: 6px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  color: #333;
+  width: 240px;
+  transition: transform 0.3s ease;
+}
+
+.journey-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.journey-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.journey-caption {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+/* Galeri Polaroid 7 Keping */
+.polaroid-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  max-width: 820px;
+  margin-top: 25px;
+  z-index: 2;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 10px 10px 34px 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s ease, z-index 0.3s;
+  cursor: pointer;
+}
+
+.polaroid img {
+  width: 145px;
+  height: 155px;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid:nth-child(1) { transform: rotate(-7deg); }
+.polaroid:nth-child(2) { transform: rotate(5deg) translateY(6px); }
+.polaroid:nth-child(3) { transform: rotate(-4deg); }
+.polaroid:nth-child(4) { transform: rotate(7deg); }
+.polaroid:nth-child(5) { transform: rotate(-6deg) translateY(-5px); }
+.polaroid:nth-child(6) { transform: rotate(4deg); }
+.polaroid:nth-child(7) { transform: rotate(-3deg); }
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.15);
+  z-index: 20;
+}
+
+.sticker {
+  position: absolute;
+  font-size: 3rem;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  pointer-events: none;
+}
+
+.sticker-top-left { top: 40px; left: 60px; transform: rotate(-15deg); }
+.sticker-top-right { top: 85px; right: 90px; transform: rotate(15deg); }
+.sticker-bottom-left { bottom: 35px; left: 75px; }
+
+/* ==========================================================================
+   7. SKRIN 5: GIFT (SURAT TYPEWRITER & PIRING HITAM)
+   ========================================================================== */
+.gift-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+  width: 100%;
+  max-width: 920px;
+  margin-top: 10px;
+}
+
+.letter-column {
+  flex: 1 1 400px;
+  text-align: left;
+}
+
+.recipient-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.4rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+  margin-left: 12px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.crumpled-paper {
+  background-color: var(--paper-cream);
+  background-image: 
+    radial-gradient(at 20% 30%, rgba(215, 203, 184, 0.35) 0px, transparent 50%),
+    radial-gradient(at 80% 70%, rgba(200, 185, 165, 0.4) 0px, transparent 50%);
+  color: #241c15;
+  padding: 28px 32px;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  transform: rotate(-3deg);
+  min-height: 235px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  border: 1px solid #e0d5c1;
+}
+
+.typing-cursor {
+  font-weight: 700;
+  color: #68004d;
+  animation: blinkCursor 0.75s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.frame-column {
+  flex: 0 1 280px;
+  position: relative;
+}
+
+.gold-frame-main {
+  border: 12px solid var(--gold-primary);
+  border-image: linear-gradient(45deg, var(--gold-dark), var(--gold-light), var(--gold-primary), var(--gold-dark)) 1;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.6);
+  transform: rotate(5deg);
+  background: #fff;
+}
+
+.gold-frame-main img {
+  width: 235px;
+  height: 255px;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-deco-cam {
+  position: absolute;
+  bottom: -20px;
+  left: -25px;
+  font-size: 3rem;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+}
+
+.frame-deco-rose {
+  position: absolute;
+  top: -22px;
+  right: -20px;
+  font-size: 2.8rem;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+}
+
+/* Piring Hitam (Vinyl Player) */
+.vinyl-wrapper {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.vinyl-disc {
+  width: 115px;
+  height: 115px;
+  background: repeating-radial-gradient(
+    circle,
+    #141414,
+    #141414 4px,
+    #262626 5px,
+    #141414 6px
+  );
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
+  border: 3px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spinVinyl 7s linear infinite;
+  animation-play-state: paused;
+}
+
+.vinyl-disc.spinning {
+  animation-play-state: running;
+}
+
+.vinyl-center {
+  width: 34px;
+  height: 34px;
+  background: radial-gradient(circle, #ff4d4d 0%, #990000 100%);
+  border-radius: 50%;
+  border: 4px solid #fff;
+}
+
+@keyframes spinVinyl {
+  100% { transform: rotate(360deg); }
+}
+
+.vinyl-ui {
+  margin-top: -22px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vinyl-pill {
+  background: #e62e2e;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  letter-spacing: 3px;
+}
+
+.vinyl-status {
+  font-size: 0.78rem;
+  margin-top: 4px;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* ==========================================================================
+   8. SKRIN 6: PLAYLIST (YOUTUBE & 3 BINGKAI EMAS)
+   ========================================================================== */
+.playlist-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 960px;
+  margin-top: 20px;
+}
+
+.youtube-box {
+  flex: 1 1 480px;
+}
+
+.video-responsive {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: #000;
+}
+
+.video-responsive iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.retro-decorations {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2.6rem;
+  margin-top: 15px;
+  filter: drop-shadow(0 5px 12px rgba(255, 180, 255, 0.5));
+}
+
+.trio-gold-frames {
+  flex: 0 1 340px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.mini-gold-frame {
+  border: 9px solid var(--gold-primary);
+  border-image: linear-gradient(45deg, var(--gold-dark), var(--gold-light), var(--gold-dark)) 1;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55);
+  width: 145px;
+  height: 155px;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.mini-gold-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-1 { transform: rotate(-6deg); }
+.frame-2 { transform: rotate(6deg); }
+.frame-3 { transform: rotate(-3deg); }
+
+.mini-gold-frame:hover {
+  transform: rotate(0deg) scale(1.08);
+  z-index: 5;
+}
+
+/* ==========================================================================
+   9. RESPONSIF TELEFON PINTAR (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .collage-stage {
+    min-height: 430px;
+  }
+
+  .photo-circle {
+    left: 10px;
+    top: 0;
+  }
+
+  .photo-circle img {
+    width: 95px;
+    height: 95px;
+  }
+
+  .photo-polaroid-left {
+    left: 15px;
+    bottom: 0;
+  }
+
+  .photo-polaroid-left img {
+    width: 95px;
+    height: 95px;
+  }
+
+  .photobooth-strip {
+    right: 10px;
+    top: 10px;
+  }
+
+  .photobooth-strip img {
+    width: 72px;
+    height: 62px;
+  }
+
+  .crumpled-paper {
+    transform: rotate(0deg);
+    padding: 22px;
+  }
+
+  .polaroid img {
+    width: 125px;
+    height: 135px;
+  }
+}
