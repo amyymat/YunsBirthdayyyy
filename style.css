@@ -51,6 +51,7 @@ body {
   display: flex;
 }
 
+/* Tanpa transform pada screen supaya kedudukan zoom Polaroid kekal 100% tepat di tengah */
 @keyframes screenFade {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -164,4 +165,700 @@ body {
   font-family: 'Great Vibes', cursive;
   font-size: 2.3rem;
   margin-top: 24px;
-  opacity: 0.9
+  opacity: 0.95;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   4. SKRIN 2: SAMPUL TERBUKA & KOLAJ GAMBAR
+   ========================================================================== */
+.collage-stage {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.open-envelope-card {
+  width: 310px;
+  height: 230px;
+  background: #f5efe6;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  z-index: 3;
+  border: 2px solid #e6dccf;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid #cbbba0;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #63004a;
+  padding: 10px;
+}
+
+.card-inner h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.7rem;
+  line-height: 1.15;
+  font-weight: 400;
+}
+
+.card-date {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  margin-top: 10px;
+}
+
+.collage-item, .deco-floating {
+  position: absolute;
+  opacity: 0;
+  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.35s; }
+.delay-3 { animation-delay: 0.55s; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.5) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.photo-circle {
+  left: 25px;
+  top: 15px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #ff77cc, 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 4;
+}
+
+.photo-circle img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-polaroid-left {
+  left: 35px;
+  bottom: 10px;
+  background: #fff;
+  padding: 7px 7px 22px 7px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+.photo-polaroid-left img {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+  display: block;
+  transform: rotate(-12deg);
+}
+
+.photobooth-strip {
+  right: 35px;
+  top: 5px;
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 4;
+  rotate: 12deg;
+}
+
+.photobooth-strip img {
+  width: 90px;
+  height: 78px;
+  object-fit: cover;
+  display: block;
+}
+
+.deco-butterfly {
+  top: 12px;
+  right: 165px;
+  font-size: 2.5rem;
+  z-index: 5;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.deco-rose {
+  bottom: 12px;
+  right: 155px;
+  font-size: 2.6rem;
+  z-index: 5;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.btn-surprise {
+  background: transparent;
+  color: var(--text-white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border: none;
+  border-bottom: 2px solid var(--text-white);
+  padding-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+
+.btn-surprise:hover {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+  transform: scale(1.07);
+}
+
+/* ==========================================================================
+   5. SKRIN 3: MENU UTAMA (4 IKON & LENS FLARE)
+   ========================================================================== */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
+  width: 100%;
+  max-width: 880px;
+  margin-top: 20px;
+}
+
+.menu-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.35s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-12px) scale(1.06);
+}
+
+.lens-flare {
+  position: absolute;
+  top: 10px;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(255, 215, 100, 0.75) 0%, rgba(255, 160, 40, 0.25) 45%, transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  animation: flareGlow 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes flareGlow {
+  0% { transform: scale(0.9); opacity: 0.75; }
+  100% { transform: scale(1.18); opacity: 1; }
+}
+
+.menu-icon {
+  font-size: 4.6rem;
+  z-index: 2;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+}
+
+.menu-label {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.35rem;
+  margin-top: 8px;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.85);
+  padding: 0 12px;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   6. SKRIN 4A & 4B: JOURNEY & GALERI POLAROID INTERAKTIF (MOMENT)
+   ========================================================================== */
+.journey-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  max-width: 900px;
+}
+
+.journey-card {
+  background: #fff;
+  padding: 12px 12px 18px;
+  border-radius: 6px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  color: #333;
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.journey-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.journey-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.journey-caption {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  margin-top: 12px;
+  font-size: 1.05rem;
+  color: #4a0036;
+}
+
+/* Latar Gelap (Backdrop) Semasa Gambar Polaroid Dibesarkan */
+.polaroid-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 0, 12, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 50; /* Di bawah gambar yang dibesarkan (100), tetapi di atas gambar lain (2) */
+}
+
+.polaroid-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Galeri Polaroid 7 Keping */
+.polaroid-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 840px;
+  margin-top: 25px;
+  /* PENTING: Jangan letak z-index di sini supaya gambar yang ditekan boleh naik ke atas backdrop */
+}
+
+.polaroid {
+  background: #ffffff;
+  padding: 10px 10px 10px 10px;
+  width: 168px;
+  border-radius: 3px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  position: relative;
+  z-index: 2; /* Gambar yang tidak ditekan berada di belakang lapisan blur (50) */
+  transition: transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.48s ease;
+}
+
+.polaroid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Ruang Putih Bawah Polaroid ('...' semasa kecil, kapsyen penuh semasa besar) */
+.polaroid-caption {
+  color: #2b1d28;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 6px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.25;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 4px;
+}
+
+/* Gambar yang ditekan naik ke z-index: 100 (di hadapan lapisan blur) */
+.polaroid.expanded {
+  z-index: 100 !important;
+  background: #ffffff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+}
+
+.polaroid.expanded .polaroid-caption {
+  font-size: 0.54rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: #22001a;
+}
+
+/* ==========================================================================
+   7. SKRIN 5: GIFT (SUSUNAN ATAS KE BAWAH: KAD UCAPAN -> GAMBAR & LAGU -> PUISI)
+   ========================================================================== */
+.gift-vertical-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  max-width: 720px;
+  margin: 15px auto 30px;
+}
+
+/* 1. Bahagian Paling Atas: Kad Ucapan */
+.gift-top-card {
+  width: 100%;
+  text-align: center;
+}
+
+.recipient-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.3rem, 6vw, 4.4rem);
+  font-weight: 400;
+  margin-bottom: 12px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.crumpled-paper {
+  background-color: var(--paper-cream);
+  background-image: 
+    radial-gradient(at 20% 30%, rgba(215, 203, 184, 0.35) 0px, transparent 50%),
+    radial-gradient(at 80% 70%, rgba(200, 185, 165, 0.4) 0px, transparent 50%);
+  color: #241c15;
+  padding: 28px 32px;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  font-family: 'Playfair Display', serif;
+  border: 1px solid #e0d5c1;
+  text-align: left;
+}
+
+.greeting-card-box {
+  min-height: 210px;
+  transform: rotate(-1deg);
+}
+
+.card-heading, .poem-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #5c0044;
+  margin-bottom: 14px;
+  border-bottom: 1.5px dashed #cbbba0;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.greeting-body {
+  font-size: 1.06rem;
+  line-height: 1.85;
+  display: inline;
+}
+
+.typing-cursor {
+  font-weight: 700;
+  color: #68004d;
+  animation: blinkCursor 0.75s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* 2. Bahagian Tengah: Gambar & Butang Play Musik di Bawahnya */
+.gift-middle-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.frame-column {
+  position: relative;
+}
+
+.gold-frame-main {
+  border: 12px solid var(--gold-primary);
+  border-image: linear-gradient(45deg, var(--gold-dark), var(--gold-light), var(--gold-primary), var(--gold-dark)) 1;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.6);
+  transform: rotate(2deg);
+  background: #fff;
+}
+
+.gold-frame-main img {
+  width: 250px;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-deco-cam {
+  position: absolute;
+  bottom: -18px;
+  left: -25px;
+  font-size: 3rem;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+}
+
+.frame-deco-rose {
+  position: absolute;
+  top: -22px;
+  right: -20px;
+  font-size: 2.8rem;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+}
+
+/* Piring Hitam (Vinyl Player) */
+.vinyl-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.vinyl-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.vinyl-disc {
+  width: 120px;
+  height: 120px;
+  background: repeating-radial-gradient(
+    circle,
+    #141414,
+    #141414 4px,
+    #262626 5px,
+    #141414 6px
+  );
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
+  border: 3px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spinVinyl 7s linear infinite;
+  animation-play-state: paused;
+}
+
+.vinyl-disc.spinning {
+  animation-play-state: running;
+}
+
+.vinyl-center {
+  width: 36px;
+  height: 36px;
+  background: radial-gradient(circle, #ff4d4d 0%, #990000 100%);
+  border-radius: 50%;
+  border: 4px solid #fff;
+}
+
+@keyframes spinVinyl {
+  100% { transform: rotate(360deg); }
+}
+
+.vinyl-ui {
+  margin-top: -22px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vinyl-pill {
+  background: #e62e2e;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  letter-spacing: 3px;
+}
+
+.vinyl-status {
+  font-size: 0.82rem;
+  margin-top: 5px;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* 3. Bahagian Paling Bawah (Kolum Berbeza): Puisi untuk Ayuni */
+.gift-bottom-poem {
+  width: 100%;
+}
+
+.poem-column-box {
+  transform: rotate(0.5deg);
+  padding: 34px 36px;
+  background-color: #fdfaf3;
+  border: 2px solid #decbb1;
+}
+
+.poem-stanzas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #2c1625;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   8. SKRIN 6: PLAYLIST (YOUTUBE & 3 BINGKAI EMAS)
+   ========================================================================== */
+.playlist-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 960px;
+  margin-top: 20px;
+}
+
+.youtube-box {
+  flex: 1 1 480px;
+}
+
+.video-responsive {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: #000;
+}
+
+.video-responsive iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.retro-decorations {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2.6rem;
+  margin-top: 15px;
+  filter: drop-shadow(0 5px 12px rgba(255, 180, 255, 0.5));
+}
+
+.trio-gold-frames {
+  flex: 0 1 340px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.mini-gold-frame {
+  border: 9px solid var(--gold-primary);
+  border-image: linear-gradient(45deg, var(--gold-dark), var(--gold-light), var(--gold-dark)) 1;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55);
+  width: 145px;
+  height: 155px;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.mini-gold-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-1 { transform: rotate(-6deg); }
+.frame-2 { transform: rotate(6deg); }
+.frame-3 { transform: rotate(-3deg); }
+
+.mini-gold-frame:hover {
+  transform: rotate(0deg) scale(1.08);
+  z-index: 5;
+}
+
+/* ==========================================================================
+   9. RESPONSIF TELEFON PINTAR (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .collage-stage {
+    min-height: 430px;
+  }
+
+  .photo-circle {
+    left: 10px;
+    top: 0;
+  }
+
+  .photo-circle img {
+    width: 95px;
+    height: 95px;
+  }
+
+  .photo-polaroid-left {
+    left: 15px;
+    bottom: 0;
+  }
+
+  .photo-polaroid-left img {
+    width: 95px;
+    height: 95px;
+  }
+
+  .photobooth-strip {
+    right: 10px;
+    top: 10px;
+  }
+
+  .photobooth-strip img {
+    width: 72px;
+    height: 62px;
+  }
+
+  .greeting-card-box, .poem-column-box {
+    transform: rotate(0deg);
+    padding: 22px 20px;
+  }
+
+  .polaroid {
+    width: 142px;
+  }
+
+  .polaroid img {
+    height: 125px;
+  }
+}
