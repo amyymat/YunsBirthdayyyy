@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Nurul Ayuni ✨</title>
   
-  <!-- Google Fonts: Great Vibes (Kaligrafi), Playfair Display (Puisi), Poppins (UI) -->
+  <!-- Google Fonts: Great Vibes (Kaligrafi), Playfair Display (Puisi/Surat), Poppins (UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -105,7 +105,7 @@
         <span class="menu-label">Playlist</span>
       </div>
 
-      <!-- Ikon 4: Gift (Puisi & Lagu 2) -->
+      <!-- Ikon 4: Gift (Kad Ucapan, Gambar, Lagu 2 & Puisi) -->
       <div class="menu-card" id="btnOpenGift">
         <div class="lens-flare"></div>
         <div class="menu-icon">🎁</div>
@@ -135,110 +135,138 @@
     </div>
   </section>
 
-  <!-- ==================== SKRIN 4B: MOMENT (GALERI POLAROID 7 GAMBAR) ==================== -->
+  <!-- ==================== SKRIN 4B: MOMENT (GALERI POLAROID INTERAKTIF) ==================== -->
   <section id="screen-moment" class="screen">
     <button class="btn-back" data-target="screen-menu">BACK ◀</button>
     
+    <!-- Latar Gelap Apabila Gambar Polaroid Dibesarkan (Klik luar untuk kecilkan semula) -->
+    <div class="polaroid-backdrop" id="polaroidBackdrop"></div>
+
     <!-- Pelekat Hiasan -->
     <span class="sticker sticker-top-left">🪐</span>
     <span class="sticker sticker-top-right">💖</span>
     <span class="sticker sticker-bottom-left">🐋</span>
 
     <div class="polaroid-wall">
-      <div class="polaroid"><img src="pic9.jpeg" alt="Moment 1"></div>
-      <div class="polaroid"><img src="pic10.jpeg" alt="Moment 2"></div>
-      <div class="polaroid"><img src="pic11.jpeg" alt="Moment 3"></div>
-      <div class="polaroid"><img src="pic12.jpeg" alt="Moment 4"></div>
-      <div class="polaroid"><img src="pic13.jpeg" alt="Moment 5"></div>
-      <div class="polaroid"><img src="pic14.jpeg" alt="Moment 6"></div>
-      <div class="polaroid"><img src="pic15.jpeg" alt="Moment 7"></div>
+      <!-- Pic 9 -->
+      <div class="polaroid" data-caption="Waktu u p Kota Belud menjelajah bumi dan Interview pembuat penjaram">
+        <img src="pic9.jpeg" alt="Moment 1">
+        <p class="polaroid-caption">...</p>
+      </div>
+
+      <!-- Pic 10 -->
+      <div class="polaroid" data-caption="tem kita p One B membeli barang untuk mengurus bumi dan seisinya">
+        <img src="pic10.jpeg" alt="Moment 2">
+        <p class="polaroid-caption">...</p>
+      </div>
+
+      <!-- Pic 11 -->
+      <div class="polaroid" data-caption="Rasanya ini tem u membentang untuk Tesis">
+        <img src="pic11.jpeg" alt="Moment 3">
+        <p class="polaroid-caption">...</p>
+      </div>
+
+      <!-- Pic 12 -->
+      <div class="polaroid" data-caption="Waktu u p antar tesis u tpt lecturer selepas penat lelah menentang dunia">
+        <img src="pic12.jpeg" alt="Moment 4">
+        <p class="polaroid-caption">...</p>
+      </div>
+
+      <!-- Pic 13 -->
+      <div class="polaroid" data-caption="Time u p membentang di fakulti pasal tesis u">
+        <img src="pic13.jpeg" alt="Moment 5">
+        <p class="polaroid-caption">...</p>
+      </div>
+
+      <!-- Pic 14 -->
+      <div class="polaroid" data-caption="Tem kami membentang n u di Fakulti buka booth untuk penilaian n i dtg utk tolong">
+        <img src="pic14.jpeg" alt="Moment 6">
+        <p class="polaroid-caption">...</p>
+      </div>
+
+      <!-- Pic 15 -->
+      <div class="polaroid" data-caption="Waktu u p Dinner Fakulti menjadi Artis Bumi">
+        <img src="pic15.jpeg" alt="Moment 7">
+        <p class="polaroid-caption">...</p>
+      </div>
     </div>
   </section>
 
-  <!-- ==================== SKRIN 5: GIFT (PUISI & LAGU 2) ==================== -->
+  <!-- ==================== SKRIN 5: GIFT (ATAS KE BAWAH: KAD UCAPAN -> GAMBAR -> PLAY MUSIK -> PUISI) ==================== -->
   <section id="screen-gift" class="screen">
     <!-- Butang Back Khas untuk Gift: Hentikan lagu2 & sambung lagu utama -->
     <button class="btn-back" id="btnBackFromGift">BACK ◀</button>
     
-    <div class="gift-layout">
-      <!-- Bahagian Kiri: Nama & Kertas Puisi -->
-      <div class="letter-column">
+    <div class="gift-vertical-container">
+      
+      <!-- 1. PALING ATAS: NAMA & KAD UCAPAN -->
+      <div class="gift-top-card">
         <h2 class="recipient-name">Nurul Ayuni</h2>
-        
-        <div class="crumpled-paper">
+        <div class="crumpled-paper greeting-card-box">
+          <h3 class="card-heading">Kad Ucapan 💌</h3>
+          <p id="typewriter-text" class="greeting-body"></p>
+          <span class="typing-cursor">|</span>
+        </div>
+      </div>
+
+      <!-- 2. BAHAGIAN TENGAH: GAMBAR & BUTANG PLAY MUSIK DI BAWAH GAMBAR -->
+      <div class="gift-middle-media">
+        <div class="frame-column">
+          <div class="gold-frame-main">
+            <img src="pic16.jpeg" alt="Nurul Ayuni">
+          </div>
+          <span class="frame-deco-cam">📸</span>
+          <span class="frame-deco-rose">🌹</span>
+        </div>
+
+        <!-- Piring Hitam (Mainkan lagu2.mp3) di bawah gambar -->
+        <div class="vinyl-wrapper" id="vinylControl">
+          <div class="vinyl-disc" id="vinylDisc">
+            <div class="vinyl-center"></div>
+          </div>
+          <div class="vinyl-ui">
+            <div class="vinyl-pill">⏮ <span id="playIcon">▶</span> ⏭</div>
+            <span class="vinyl-status" id="musicStatus">Play Musik</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PALING BAWAH (KOLUM BERBEZA): PUISI UNTUK AYUNI -->
+      <div class="gift-bottom-poem">
+        <div class="crumpled-paper poem-column-box">
           <h3 class="poem-title">Puisi untuk Ayuni</h3>
           
-          <!-- PILIHAN A: Teks Puisi Menaip Automatik (Boleh tukar ayat di dalam script.js) -->
-          <p id="typewriter-text" class="poem-body"></p>
-          <span class="typing-cursor">|</span>
+          <div class="poem-stanzas">
+            <p>Teruntuk Ayuni,<br>
+            Wanita kecil dengan Impian yang besar - tak mudah terkalahkan dengan riuhnya bumi,</p>
 
-          <!-- PILIHAN B: Jika puisi anda dalam bentuk fail gambar (contoh: puisi.jpeg), 
-               buang tanda komen (<!-- dan -->) pada baris di bawah: -->
-          <!-- <img src="puisi.jpeg" alt="Puisi untuk Ayuni" class="poem-image"> -->
-        </div>
-      </div>
+            <p>Di sela waktu 4 bola mata bertemu,<br>
+            Dengan nama yang salah sebagai sapaan,<br>
+            Tak disangka menjadi awal dari sebuah cerita,</p>
 
-      <!-- Bahagian Kanan: Bingkai Emas & Hiasan -->
-      <div class="frame-column">
-        <div class="gold-frame-main">
-          <img src="pic16.jpeg" alt="Nurul Ayuni">
-        </div>
-        <span class="frame-deco-cam">📸</span>
-        <span class="frame-deco-rose">🌹</span>
-      </div>
-    </div>
+            <p>Maka bermusimlah berlalu,<br>
+            memisahkan jejak langkah,<br>
+            membawa kita layar ke haluan berbeza,</p>
 
-    <!-- Piring Hitam (Mainkan lagu2.mp3) -->
-    <div class="vinyl-wrapper" id="vinylControl">
-      <div class="vinyl-disc" id="vinylDisc">
-        <div class="vinyl-center"></div>
-      </div>
-      <div class="vinyl-ui">
-        <div class="vinyl-pill">⏮ <span id="playIcon">▶</span> ⏭</div>
-        <span class="vinyl-status" id="musicStatus">Play Musik</span>
-      </div>
-    </div>
-  </section>
+            <p>Hingga takdir kembali menemukan,<br>
+            Di bumi yang berbukit, di perkarangan yang luas terbentang,<br>
+            Saat berselisih di laluan,<br>
+            Pandangan bertaut semula, menghidupkan bara yang belum padam.</p>
 
-  <!-- ==================== SKRIN 6: PLAYLIST (YOUTUBE & 3 BINGKAI EMAS) ==================== -->
-  <section id="screen-playlist" class="screen">
-    <button class="btn-back" data-target="screen-menu">BACK ◀</button>
-    
-    <div class="playlist-layout">
-      <!-- Pemain YouTube di Sebelah Kiri -->
-      <div class="youtube-box">
-        <div class="video-responsive">
-          <iframe 
-            id="ytPlayer"
-            src="https://www.youtube.com/embed/0f_ec37PXNQ?rel=0" 
-            title="YouTube Music Player" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="retro-decorations">
-          <span>📻</span>
-          <span>🎶</span>
-          <span>📺</span>
-        </div>
-      </div>
+            <p>Lalu kujejak bayangmu di ruang maya, menyapa khabar di balik layar,<br>
+            Dari bicara ringkas, terlerai sebuah teka-teki angka,<br>
+            Berbahas kita tentang makna di sebalik 143,<br>
+            angka sederhana yang menjadi rasa kasih,</p>
 
-      <!-- 3 Bingkai Gambar Emas di Sebelah Kanan -->
-      <div class="trio-gold-frames">
-        <div class="mini-gold-frame frame-1">
-          <img src="pic17.jpeg" alt="Foto 1">
-        </div>
-        <div class="mini-gold-frame frame-2">
-          <img src="pic18.jpeg" alt="Foto 2">
-        </div>
-        <div class="mini-gold-frame frame-3">
-          <img src="pic19.jpeg" alt="Foto 3">
-        </div>
-      </div>
-    </div>
-  </section>
+            <p>Maka bermulalah episod kita meredah malam-malam yang dingin,<br>
+            Dengan sebungkus burger di tangan sebagai tanda ingatan,<br>
+            menyusuri jalan gelap demi melihat senyuman,</p>
 
-  <!-- Pautan ke Fail JavaScript -->
-  <script src="script.js"></script>
-</body>
-</html>
+            <p>Walau ada kalanya badai kecil melanda,<br>
+            Selisih faham dan rajuk mewarnai perjalanan,</p>
+
+            <p>Kini, di saat hari terus berganti,<br>
+            Dalam setiap riuh rendah dunia yang cuba menguji,<br>
+            Jangan segan untuk berlabuh kemari.</p>
+          </div>
+        </div>
