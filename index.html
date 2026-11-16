@@ -3,21 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Special Surprise For You ✨</title>
+  <title>Happy Birthday Nurul Ayuni ✨</title>
   
-  <!-- Google Fonts: Great Vibes (Kaligrafi), Playfair Display (Surat), Poppins (UI) -->
+  <!-- Google Fonts: Great Vibes (Kaligrafi), Playfair Display (Puisi), Poppins (UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Pautan ke Fail CSS Luaran -->
+  <!-- Pautan ke Fail CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Audio Latar Belakang (Boleh tukar src kepada 'lagu.mp3' dalam repo anda) -->
-  <audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <!-- AUDIO 1: Lagu Utama (Bermula sebaik sahaja sampul surat ditekan) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="lagu.mp3" type="audio/mpeg">
+    <source src="Lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- AUDIO 2: Lagu Khas Bahagian Gift (Bermain bila tekan Play Musik) -->
+  <audio id="giftMusic" loop preload="auto">
+    <source src="lagu2.mp3" type="audio/mpeg">
+    <source src="Lagu2.mp3" type="audio/mpeg">
   </audio>
 
   <!-- ==================== SKRIN 1: SAMPUL TERTUTUP ==================== -->
@@ -31,7 +38,7 @@
       </div>
     </div>
 
-    <p class="tap-hint">tap to lanjut</p>
+    <p class="tap-hint">tekan tu sampul u</p>
   </section>
 
   <!-- ==================== SKRIN 2: SAMPUL TERBUKA & KOLAJ ==================== -->
@@ -40,36 +47,36 @@
       
       <!-- Gambar Kiri Atas (Bingkai Bulat Berpendar) -->
       <div class="collage-item photo-circle delay-1">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" alt="Kenangan 1">
+        <img src="pic1.jpeg" alt="Nurul Ayuni 1">
       </div>
 
       <!-- Gambar Kiri Bawah (Polaroid Senget) -->
       <div class="collage-item photo-polaroid-left delay-2">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400" alt="Kenangan 2">
+        <img src="pic2.jpeg" alt="Nurul Ayuni 2">
       </div>
 
       <!-- Hiasan Bunga & Rama-rama -->
       <span class="deco-floating deco-butterfly delay-2">🦋</span>
       <span class="deco-floating deco-rose delay-3">🌹</span>
 
-      <!-- Sampul Terbuka di Tengah -->
+      <!-- Kad Ucapan di Tengah -->
       <div class="open-envelope-card">
         <div class="card-inner">
-          <h2>Happy<br>Birthday</h2>
-          <span class="card-date">( 17.11.2003 )</span>
+          <h2>Happy Birthday<br>Nurul Ayuni</h2>
+          <span class="card-date">✨ Special Day ✨</span>
         </div>
       </div>
 
       <!-- Strip Photobooth 3 Gambar di Sebelah Kanan -->
       <div class="collage-item photobooth-strip delay-3">
-        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300" alt="Strip 1">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" alt="Strip 2">
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300" alt="Strip 3">
+        <img src="pic3.jpeg" alt="Strip 1">
+        <img src="pic4.jpeg" alt="Strip 2">
+        <img src="pic5.jpeg" alt="Strip 3">
       </div>
 
     </div>
 
-    <button class="btn-surprise" data-target="screen-menu">TAP FOR SURPRISE</button>
+    <button class="btn-surprise" data-target="screen-menu">tekan lagi u</button>
   </section>
 
   <!-- ==================== SKRIN 3: MENU UTAMA (4 IKON) ==================== -->
@@ -98,7 +105,7 @@
         <span class="menu-label">Playlist</span>
       </div>
 
-      <!-- Ikon 4: Gift (Surat & Audio) -->
+      <!-- Ikon 4: Gift (Puisi & Lagu 2) -->
       <div class="menu-card" id="btnOpenGift">
         <div class="lens-flare"></div>
         <div class="menu-icon">🎁</div>
@@ -107,23 +114,23 @@
     </div>
   </section>
 
-  <!-- ==================== SKRIN 4A: JOURNEY (KISAH PERJALANAN) ==================== -->
+  <!-- ==================== SKRIN 4A: JOURNEY (3 KAD KISAH) ==================== -->
   <section id="screen-journey" class="screen">
     <button class="btn-back" data-target="screen-menu">BACK ◀</button>
     <h2 class="script-title section-subtitle">Our Journey</h2>
     
     <div class="journey-showcase">
       <div class="journey-card">
-        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500" alt="First Meet">
-        <p class="journey-caption">Awal Pertemuan ✨</p>
+        <img src="pic6.jpeg" alt="Princess">
+        <p class="journey-caption">Princess 👑</p>
       </div>
       <div class="journey-card">
-        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500" alt="Best Trip">
-        <p class="journey-caption">Momen Terindah 🌅</p>
+        <img src="pic7.jpeg" alt="Paling Cantik">
+        <p class="journey-caption">Paling Cantik ✨</p>
       </div>
       <div class="journey-card">
-        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=500" alt="Together">
-        <p class="journey-caption">Terus Bersama 🤍</p>
+        <img src="pic8.jpeg" alt="di Bumi dan Bimasakti">
+        <p class="journey-caption">di Bumi dan Bimasakti 🌌</p>
       </div>
     </div>
   </section>
@@ -132,47 +139,56 @@
   <section id="screen-moment" class="screen">
     <button class="btn-back" data-target="screen-menu">BACK ◀</button>
     
-    <!-- Pelekat Hiasan seperti dalam video -->
+    <!-- Pelekat Hiasan -->
     <span class="sticker sticker-top-left">🪐</span>
     <span class="sticker sticker-top-right">💖</span>
     <span class="sticker sticker-bottom-left">🐋</span>
 
     <div class="polaroid-wall">
-      <div class="polaroid"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300" alt="Moment 1"></div>
-      <div class="polaroid"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300" alt="Moment 2"></div>
-      <div class="polaroid"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300" alt="Moment 3"></div>
-      <div class="polaroid"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" alt="Moment 4"></div>
-      <div class="polaroid"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300" alt="Moment 5"></div>
-      <div class="polaroid"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=300" alt="Moment 6"></div>
-      <div class="polaroid"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300" alt="Moment 7"></div>
+      <div class="polaroid"><img src="pic9.jpeg" alt="Moment 1"></div>
+      <div class="polaroid"><img src="pic10.jpeg" alt="Moment 2"></div>
+      <div class="polaroid"><img src="pic11.jpeg" alt="Moment 3"></div>
+      <div class="polaroid"><img src="pic12.jpeg" alt="Moment 4"></div>
+      <div class="polaroid"><img src="pic13.jpeg" alt="Moment 5"></div>
+      <div class="polaroid"><img src="pic14.jpeg" alt="Moment 6"></div>
+      <div class="polaroid"><img src="pic15.jpeg" alt="Moment 7"></div>
     </div>
   </section>
 
-  <!-- ==================== SKRIN 5: GIFT (SURAT & PEMAIN PIRING HITAM) ==================== -->
+  <!-- ==================== SKRIN 5: GIFT (PUISI & LAGU 2) ==================== -->
   <section id="screen-gift" class="screen">
-    <button class="btn-back" data-target="screen-menu">BACK ◀</button>
+    <!-- Butang Back Khas untuk Gift: Hentikan lagu2 & sambung lagu utama -->
+    <button class="btn-back" id="btnBackFromGift">BACK ◀</button>
     
     <div class="gift-layout">
-      <!-- Bahagian Kiri: Nama & Kertas Surat -->
+      <!-- Bahagian Kiri: Nama & Kertas Puisi -->
       <div class="letter-column">
-        <h2 class="recipient-name">Nurul Ayuni Cantik Saya</h2>
+        <h2 class="recipient-name">Nurul Ayuni</h2>
+        
         <div class="crumpled-paper">
-          <p id="typewriter-text"></p>
+          <h3 class="poem-title">Puisi untuk Ayuni</h3>
+          
+          <!-- PILIHAN A: Teks Puisi Menaip Automatik (Boleh tukar ayat di dalam script.js) -->
+          <p id="typewriter-text" class="poem-body"></p>
           <span class="typing-cursor">|</span>
+
+          <!-- PILIHAN B: Jika puisi anda dalam bentuk fail gambar (contoh: puisi.jpeg), 
+               buang tanda komen (<!-- dan -->) pada baris di bawah: -->
+          <!-- <img src="puisi.jpeg" alt="Puisi untuk Ayuni" class="poem-image"> -->
         </div>
       </div>
 
       <!-- Bahagian Kanan: Bingkai Emas & Hiasan -->
       <div class="frame-column">
         <div class="gold-frame-main">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Potret Utama">
+          <img src="pic16.jpeg" alt="Nurul Ayuni">
         </div>
         <span class="frame-deco-cam">📸</span>
         <span class="frame-deco-rose">🌹</span>
       </div>
     </div>
 
-    <!-- Piring Hitam (Vinyl Player) di Bawah -->
+    <!-- Piring Hitam (Mainkan lagu2.mp3) -->
     <div class="vinyl-wrapper" id="vinylControl">
       <div class="vinyl-disc" id="vinylDisc">
         <div class="vinyl-center"></div>
@@ -194,7 +210,7 @@
         <div class="video-responsive">
           <iframe 
             id="ytPlayer"
-            src="https://www.youtube.com/embed/gvunApwKIiY" 
+            src="https://www.youtube.com/embed/0f_ec37PXNQ?rel=0" 
             title="YouTube Music Player" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
@@ -210,19 +226,19 @@
       <!-- 3 Bingkai Gambar Emas di Sebelah Kanan -->
       <div class="trio-gold-frames">
         <div class="mini-gold-frame frame-1">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300" alt="Foto 1">
+          <img src="pic17.jpeg" alt="Foto 1">
         </div>
         <div class="mini-gold-frame frame-2">
-          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300" alt="Foto 2">
+          <img src="pic18.jpeg" alt="Foto 2">
         </div>
         <div class="mini-gold-frame frame-3">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300" alt="Foto 3">
+          <img src="pic19.jpeg" alt="Foto 3">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pautan ke Fail JavaScript Luaran -->
+  <!-- Pautan ke Fail JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
